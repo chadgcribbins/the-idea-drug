@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.29.3",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "style-dictionary build --config sd.config.js && astro build",
     "preview": "astro preview",
     "deploy": "vercel deploy --prod",
     "tokens:build": "style-dictionary build --config sd.config.js"
