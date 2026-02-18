@@ -1,18 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getEntry, getCollection } from "astro:content";
+
+const page = await getEntry("pages", "investments");
+const d = page.data as Record<string, any>;
+
+const allVentures = await getCollection("ventures");
+
+const active = allVentures
+  .filter((v) => v.data.status === "active")
+  .sort((a, b) => a.data.order - b.data.order);
+
+const portfolio = allVentures
+  .filter((v) => v.data.status === "invested")
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Layout
-  title="Investments"
-  description="Portfolio companies and investments across energy, health, finance, food, and climate technology."
->
+<Layout title={d.title} description={d.description}>
   <section class="section section--lg">
     <div class="container container--narrow">
       <h1>Investments</h1>
-      <p class="lead">
-        Active ventures and portfolio investments across sectors where
-        hypothesis-led thinking creates unfair advantages.
-      </p>
+      <p class="lead">{d.lead}</p>
     </div>
   </section>
 
@@ -23,18 +31,12 @@ import Layout from "../layouts/Layout.astro";
     <div class="container">
       <h2>Active ventures</h2>
       <div class="grid grid--3 mt-3">
-        <div class="card">
-          <h3>Juicy</h3>
-          <p class="text-muted">Free domestic batteries</p>
-        </div>
-        <div class="card">
-          <h3>Tx</h3>
-          <p class="text-muted">Tokenised hashrate</p>
-        </div>
-        <div class="card">
-          <h3>Slingshot</h3>
-          <p class="text-muted">Algorithmic trading</p>
-        </div>
+        {active.map((v) => (
+          <div class="card">
+            <h3>{v.data.name}</h3>
+            <p class="text-muted">{v.data.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -44,42 +46,12 @@ import Layout from "../layouts/Layout.astro";
     <div class="container">
       <h2>Portfolio</h2>
       <div class="grid grid--3 mt-3">
-        <div class="card">
-          <h3>Civo</h3>
-          <p class="text-muted">Cloud platform</p>
-        </div>
-        <div class="card">
-          <h3>Nature Made</h3>
-          <p class="text-muted">UPF-free food awards</p>
-        </div>
-        <div class="card">
-          <h3>Labcycle</h3>
-          <p class="text-muted">Medical plastics recycling</p>
-        </div>
-        <div class="card">
-          <h3>Fanplanz</h3>
-          <p class="text-muted">Object recognition</p>
-        </div>
-        <div class="card">
-          <h3>Caldera</h3>
-          <p class="text-muted">Heat batteries</p>
-        </div>
-        <div class="card">
-          <h3>Optect</h3>
-          <p class="text-muted">AI flame detection</p>
-        </div>
-        <div class="card">
-          <h3>NewChange</h3>
-          <p class="text-muted">FX data aggregation</p>
-        </div>
-        <div class="card">
-          <h3>Ctrl Alt</h3>
-          <p class="text-muted">FCA-registered fractional ownership</p>
-        </div>
-        <div class="card">
-          <h3>RasTech</h3>
-          <p class="text-muted">Containerised aquaculture</p>
-        </div>
+        {portfolio.map((v) => (
+          <div class="card">
+            <h3>{v.data.name}</h3>
+            <p class="text-muted">{v.data.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

@@ -2,12 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import EmailCapture from "../components/EmailCapture.astro";
 import { SITE } from "../lib/site";
+import { getEntry } from "astro:content";
+
+const page = await getEntry("pages", "the-idea-drug");
+const { Content } = await page.render();
+const d = page.data as Record<string, any>;
 ---
 
-<Layout
-  title="The Idea Drug"
-  description="A provocative, practical takedown of modern innovation culture and a replacement operating system. By Mark Bjornsgaard."
->
+<Layout title={d.title} description={d.description}>
   <section class="section section--lg">
     <div class="container">
       <div class="book-hero">
@@ -39,42 +41,16 @@ import { SITE } from "../lib/site";
   <section class="section">
     <div class="container container--narrow">
       <h2>What's inside</h2>
-      <p>
-        A provocative, practical takedown of modern innovation culture and a
-        replacement operating system. Part manifesto, part field manual, part
-        controlled demolition of innovation religion — followed by a practical
-        rebuild.
-      </p>
+      <p>{d.synopsis}</p>
 
       <div class="book-parts">
-        <div class="book-part">
-          <h3>Part 1 — Why</h3>
-          <p class="book-part-title">Ideas / The Disease</p>
-          <p>
-            Why most innovation fails. Ideas are the natural output of our fast,
-            impulsive brain — solutions in disguise that hijack attention from
-            customer need. A critique of idea-led approaches, including Lean
-            Startup's Build-Measure-Learn.
-          </p>
-        </div>
-        <div class="book-part">
-          <h3>Part 2 — What</h3>
-          <p class="book-part-title">The Need-state Hypothesis</p>
-          <p>
-            The forcing function: <strong>Because &gt; Someone &gt; Will</strong>.
-            Deliberate pedantry as a feature, not a bug. Worked examples across
-            energy, health, finance, and technology.
-          </p>
-        </div>
-        <div class="book-part">
-          <h3>Part 3 — How</h3>
-          <p class="book-part-title">Rinsing</p>
-          <p>
-            A 4-6 week field manual for defining, testing, and killing
-            hypotheses. Setup week, four weeks of weekly shipping, wrap week.
-            Boring on purpose — because boring makes self-deception harder.
-          </p>
-        </div>
+        {d.bookParts?.map((part: { heading: string; title: string; description: string }) => (
+          <div class="book-part">
+            <h3>{part.heading}</h3>
+            <p class="book-part-title">{part.title}</p>
+            <p>{part.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -82,42 +58,26 @@ import { SITE } from "../lib/site";
   <!-- KLF inspiration -->
   <section class="section">
     <div class="container container--narrow">
-      <p class="pull-quote">
-        "Inspired by the KLF's 'The Manual' — a deadpan, brutally practical
-        guide. The same energy applied to innovation: no fluff, no inspiration
-        porn, just the work."
-      </p>
+      <p class="pull-quote">{d.klfQuote}</p>
     </div>
   </section>
 
-  <!-- Trilogy -->
+  <!-- Trilogy (markdown body) -->
   <section class="section">
     <div class="container container--narrow">
-      <h2>Part of a trilogy</h2>
-      <p>
-        The Idea Drug is Volume 1 — defining value hypotheses. Two more volumes
-        follow: running sprints with hypothesis definition at the centre, and
-        scaling or killing ventures once early signals emerge.
-      </p>
+      <Content />
     </div>
   </section>
 
-  <!-- The talk at Imperial College -->
+  <!-- The talk -->
   <section class="section" id="talk">
     <div class="container container--narrow">
       <h2>The talk</h2>
-      <p class="video-description">
-        In this 9-minute talk at Imperial College, Mark walks through why ideas
-        are killing innovation — and introduces the simple forcing function that
-        changed everything. From an origin story in a chaotic insurance workshop
-        to the Deep Green exit, he makes the case that the core job of an
-        entrepreneur isn't coming up with ideas. It's defining, refining, and
-        prioritising hypotheses.
-      </p>
+      <p class="video-description">{d.videoDescription}</p>
       <div class="video-embed">
         <iframe
-          src="https://www.youtube.com/embed/juzK8LIoQX8"
-          title="Mark Bjornsgaard — The Idea Drug — Imperial College 2026"
+          src={`https://www.youtube.com/embed/${d.videoId}`}
+          title={d.videoTitle}
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -132,9 +92,11 @@ import { SITE } from "../lib/site";
     <div class="container container--narrow">
       <h2>Get your copy</h2>
       <div class="buy-links">
-        <a href="#" class="btn btn--primary">Amazon UK</a>
-        <a href="#" class="btn btn--secondary">Amazon US</a>
-        <a href="#" class="btn btn--secondary">Bookshop.org</a>
+        {d.buyLinks?.map((link: { label: string; href: string }, i: number) => (
+          <a href={link.href} class:list={["btn", i === 0 ? "btn--primary" : "btn--secondary"]}>
+            {link.label}
+          </a>
+        ))}
       </div>
     </div>
   </section>

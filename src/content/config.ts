@@ -2,11 +2,13 @@ import { defineCollection, z } from "astro:content";
 
 const pages = defineCollection({
   type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    ogImage: z.string().optional(),
-  }),
+  schema: z
+    .object({
+      title: z.string(),
+      description: z.string().optional(),
+      ogImage: z.string().optional(),
+    })
+    .passthrough(),
 });
 
 const ventures = defineCollection({
@@ -21,19 +23,7 @@ const ventures = defineCollection({
   }),
 });
 
-const investments = defineCollection({
-  type: "content",
-  schema: z.object({
-    name: z.string(),
-    sector: z.string(),
-    description: z.string(),
-    url: z.string().optional(),
-    order: z.number().default(0),
-  }),
-});
-
 export const collections = {
   pages,
   ventures,
-  investments,
 };

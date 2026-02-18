@@ -1,19 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const page = await getEntry("pages", "contact");
+const d = page.data as Record<string, any>;
 ---
 
-<Layout
-  title="Contact"
-  description="Get in touch with Mark Bjornsgaard — book a Rinsing workshop, speaker enquiries, media requests, or general questions."
->
+<Layout title={d.title} description={d.description}>
   <section class="section section--lg">
     <div class="container container--narrow">
       <h1>Contact</h1>
-      <p class="lead">
-        Whether you're interested in a Rinsing workshop, a speaking engagement,
-        media enquiry, or just want to talk hypotheses — I'd love to hear from
-        you.
-      </p>
+      <p class="lead">{d.lead}</p>
     </div>
   </section>
 
@@ -33,11 +30,9 @@ import Layout from "../layouts/Layout.astro";
         <div class="form-group">
           <label for="subject">What's this about?</label>
           <select id="subject" name="subject">
-            <option value="general">General enquiry</option>
-            <option value="rinsing">Rinsing workshop</option>
-            <option value="speaking">Speaking engagement</option>
-            <option value="media">Media / press</option>
-            <option value="investment">Investment</option>
+            {d.subjectOptions?.map((opt: { value: string; label: string }) => (
+              <option value={opt.value}>{opt.label}</option>
+            ))}
           </select>
         </div>
         <div class="form-group">
