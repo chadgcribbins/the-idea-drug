@@ -1,0 +1,155 @@
+---
+import { SITE } from "../lib/site";
+---
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="/" class="nav-logo">{SITE.name}</a>
+
+    <button
+      class="nav-toggle"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      aria-label="Toggle navigation"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <div class="nav-menu" id="nav-menu">
+      <ul class="nav-links" role="list">
+        {SITE.nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+      <ul class="nav-links nav-links--right" role="list">
+        {SITE.navRight.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--sys-z-index-sticky, 200);
+    background: var(--sys-surface-page, #f9f8f4);
+    border-bottom: 1px solid var(--sys-color-divider, #e5e7eb);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-logo {
+    font-family: var(--sys-font-family-display, 'Jost', sans-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sys-color-on-surface, #000);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--sys-color-on-surface, #000);
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--sys-color-on-surface-muted, #6b7280);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--sys-color-on-surface, #000);
+  }
+
+  .nav-links--right {
+    padding-left: 2rem;
+    border-left: 1px solid var(--sys-color-divider, #e5e7eb);
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--sys-surface-page, #f9f8f4);
+      border-bottom: 1px solid var(--sys-color-divider, #e5e7eb);
+      padding: 1rem 1.5rem;
+      gap: 1rem;
+    }
+
+    .nav-menu.is-open {
+      display: flex;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .nav-links--right {
+      padding-left: 0;
+      border-left: none;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--sys-color-divider, #e5e7eb);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector(".nav-toggle");
+  const menu = document.querySelector(".nav-menu");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+</script>

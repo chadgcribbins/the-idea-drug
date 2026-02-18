@@ -1,0 +1,123 @@
+---
+interface Props {
+  heading?: string;
+  description?: string;
+  buttonText?: string;
+  variant?: "inline" | "block";
+}
+
+const {
+  heading = "Get the first chapter free",
+  description = "Sign up and we'll send you the first chapter of The Idea Drug — plus updates on workshops, events, and new writing.",
+  buttonText = "Send it to me",
+  variant = "block",
+} = Astro.props;
+---
+
+<section class:list={["email-capture", `email-capture--${variant}`]}>
+  {variant === "block" && (
+    <div class="email-capture-copy">
+      <h3>{heading}</h3>
+      <p>{description}</p>
+    </div>
+  )}
+  <form class="email-capture-form" data-email-form>
+    <label for="email-input" class="sr-only">Email address</label>
+    <input
+      type="email"
+      id="email-input"
+      name="email"
+      placeholder="Your email address"
+      required
+      autocomplete="email"
+    />
+    <button type="submit">{buttonText}</button>
+  </form>
+</section>
+
+<style>
+  .email-capture--block {
+    background: var(--sys-surface-card, #f3f4f6);
+    padding: 2.5rem;
+    max-width: 600px;
+  }
+
+  .email-capture-copy h3 {
+    font-family: var(--sys-font-family-display, 'Jost', sans-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--sys-color-on-surface, #000);
+  }
+
+  .email-capture-copy p {
+    font-size: 0.95rem;
+    color: var(--sys-color-on-surface-muted, #6b7280);
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+
+  .email-capture-form {
+    display: flex;
+    gap: 0;
+  }
+
+  .email-capture-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--sys-surface-border, #d1d5db);
+    border-right: none;
+    background: var(--sys-surface-form-field, #fff);
+    font-size: 1rem;
+    color: var(--sys-color-on-surface, #000);
+    outline: none;
+  }
+
+  .email-capture-form input:focus {
+    border-color: var(--sys-color-focus-ring, #d42020);
+    box-shadow: 0 0 0 1px var(--sys-color-focus-ring, #d42020);
+  }
+
+  .email-capture-form button {
+    padding: 0.75rem 1.5rem;
+    background: var(--comp-action-default-bg, #000);
+    color: var(--comp-action-text-color, #fff);
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 200ms ease;
+  }
+
+  .email-capture-form button:hover {
+    background: var(--comp-action-hover-bg, #1f2937);
+  }
+
+  .email-capture--inline .email-capture-form {
+    max-width: 480px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  @media (max-width: 480px) {
+    .email-capture-form {
+      flex-direction: column;
+    }
+
+    .email-capture-form input {
+      border-right: 1px solid var(--sys-surface-border, #d1d5db);
+      border-bottom: none;
+    }
+  }
+</style>

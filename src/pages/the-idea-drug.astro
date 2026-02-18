@@ -1,0 +1,253 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EmailCapture from "../components/EmailCapture.astro";
+import { SITE } from "../lib/site";
+---
+
+<Layout
+  title="The Idea Drug"
+  description="A provocative, practical takedown of modern innovation culture and a replacement operating system. By Mark Bjornsgaard."
+>
+  <section class="section section--lg">
+    <div class="container">
+      <div class="book-hero">
+        <div class="book-cover">
+          <img
+            src="/images/cover.png"
+            alt="The Idea Drug book cover"
+            width="400"
+            height="600"
+            loading="eager"
+          />
+        </div>
+        <div class="book-details">
+          <h1>{SITE.book.title}</h1>
+          <p class="book-subtitle">{SITE.book.subtitle}</p>
+          <p class="book-publisher">Published by {SITE.book.publisher}</p>
+          <div class="book-actions">
+            <a href="#buy" class="btn btn--primary">Buy now</a>
+            <a href="#free-chapter" class="btn btn--secondary">Free first chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider-accent" />
+
+  <!-- Synopsis -->
+  <section class="section">
+    <div class="container container--narrow">
+      <h2>What's inside</h2>
+      <p>
+        A provocative, practical takedown of modern innovation culture and a
+        replacement operating system. Part manifesto, part field manual, part
+        controlled demolition of innovation religion — followed by a practical
+        rebuild.
+      </p>
+
+      <div class="book-parts">
+        <div class="book-part">
+          <h3>Part 1 — Why</h3>
+          <p class="book-part-title">Ideas / The Disease</p>
+          <p>
+            Why most innovation fails. Ideas are the natural output of our fast,
+            impulsive brain — solutions in disguise that hijack attention from
+            customer need. A critique of idea-led approaches, including Lean
+            Startup's Build-Measure-Learn.
+          </p>
+        </div>
+        <div class="book-part">
+          <h3>Part 2 — What</h3>
+          <p class="book-part-title">The Need-state Hypothesis</p>
+          <p>
+            The forcing function: <strong>Because &gt; Someone &gt; Will</strong>.
+            Deliberate pedantry as a feature, not a bug. Worked examples across
+            energy, health, finance, and technology.
+          </p>
+        </div>
+        <div class="book-part">
+          <h3>Part 3 — How</h3>
+          <p class="book-part-title">Rinsing</p>
+          <p>
+            A 4-6 week field manual for defining, testing, and killing
+            hypotheses. Setup week, four weeks of weekly shipping, wrap week.
+            Boring on purpose — because boring makes self-deception harder.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KLF inspiration -->
+  <section class="section">
+    <div class="container container--narrow">
+      <p class="pull-quote">
+        "Inspired by the KLF's 'The Manual' — a deadpan, brutally practical
+        guide. The same energy applied to innovation: no fluff, no inspiration
+        porn, just the work."
+      </p>
+    </div>
+  </section>
+
+  <!-- Trilogy -->
+  <section class="section">
+    <div class="container container--narrow">
+      <h2>Part of a trilogy</h2>
+      <p>
+        The Idea Drug is Volume 1 — defining value hypotheses. Two more volumes
+        follow: running sprints with hypothesis definition at the centre, and
+        scaling or killing ventures once early signals emerge.
+      </p>
+    </div>
+  </section>
+
+  <!-- The talk at Imperial College -->
+  <section class="section" id="talk">
+    <div class="container container--narrow">
+      <h2>The talk</h2>
+      <p class="video-description">
+        In this 9-minute talk at Imperial College, Mark walks through why ideas
+        are killing innovation — and introduces the simple forcing function that
+        changed everything. From an origin story in a chaotic insurance workshop
+        to the Deep Green exit, he makes the case that the core job of an
+        entrepreneur isn't coming up with ideas. It's defining, refining, and
+        prioritising hypotheses.
+      </p>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/juzK8LIoQX8"
+          title="Mark Bjornsgaard — The Idea Drug — Imperial College 2026"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buy links -->
+  <section class="section" id="buy">
+    <div class="container container--narrow">
+      <h2>Get your copy</h2>
+      <div class="buy-links">
+        <a href="#" class="btn btn--primary">Amazon UK</a>
+        <a href="#" class="btn btn--secondary">Amazon US</a>
+        <a href="#" class="btn btn--secondary">Bookshop.org</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email capture -->
+  <section class="section" id="free-chapter">
+    <div class="container container--narrow">
+      <EmailCapture />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .book-hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .book-cover img {
+    max-height: 500px;
+    width: auto;
+    box-shadow: var(--sys-surface-shadows-image, 0 16px 32px rgba(0, 0, 0, 0.12));
+  }
+
+  .book-subtitle {
+    font-size: 1.2rem;
+    color: var(--sys-color-on-surface-muted, #6b7280);
+    margin-bottom: 0.5rem;
+  }
+
+  .book-publisher {
+    font-size: 0.9rem;
+    color: var(--sys-color-on-surface-muted, #6b7280);
+    margin-bottom: 2rem;
+  }
+
+  .book-actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .book-parts {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .book-part {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--sys-color-divider, #e5e7eb);
+  }
+
+  .book-part:last-child {
+    border-bottom: none;
+  }
+
+  .book-part h3 {
+    color: var(--sys-color-primary, #d42020);
+    margin-bottom: 0.25rem;
+  }
+
+  .book-part-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .buy-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .video-description {
+    color: var(--sys-color-on-surface-muted, #6b7280);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .video-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--sys-surface-card, #f3f4f6);
+  }
+
+  .video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .book-hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .book-cover {
+      display: flex;
+      justify-content: center;
+    }
+
+    .book-cover img {
+      max-height: 350px;
+    }
+
+    .book-actions {
+      justify-content: center;
+    }
+  }
+</style>

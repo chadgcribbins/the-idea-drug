@@ -1,0 +1,101 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../lib/site";
+---
+
+<Layout
+  title="About"
+  description="Mark Bjornsgaard is an entrepreneur, investor and systems thinker. Founder of System Two, author of The Idea Drug."
+>
+  <section class="section section--lg">
+    <div class="container container--narrow">
+      <h1>About</h1>
+    </div>
+  </section>
+
+  <hr class="divider-accent" />
+
+  <!-- Bio -->
+  <section class="section">
+    <div class="container container--narrow">
+      <p>
+        Mark Bjornsgaard is an entrepreneur, investor and systems thinker who
+        has spent the last two decades dismantling one of business's most
+        cherished myths: that innovation is driven by ideas.
+      </p>
+      <p>
+        As founder of System Two, he has built and backed companies across
+        energy, healthcare, finance and technology, doubling revenues year after
+        year and exiting multiple ventures. His work is grounded in practice,
+        not theory — running experiments, killing bad assumptions early and
+        replacing innovation theatre with evidence.
+      </p>
+      <p>
+        Best known for his work on Deep Green and his book
+        <em>The Idea Drug</em>, Mark helps organisations move faster, waste less
+        and make progress without pretending certainty.
+      </p>
+    </div>
+  </section>
+
+  <!-- Career arc -->
+  <section class="section">
+    <div class="container container--narrow">
+      <h2>The journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Artist First</h3>
+          <p class="text-muted">Early 2000s</p>
+          <p>
+            Music software platform that helped drive the shift from CD to
+            digital download.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>Dell</h3>
+          <p class="text-muted">Corporate strategy &amp; experience design</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Human Digital</h3>
+          <p class="text-muted">Product &amp; analytics — sold to M&amp;C Saatchi</p>
+        </div>
+        <div class="timeline-item">
+          <h3>System Two</h3>
+          <p class="text-muted">Founded to "do the work rather than talk about it"</p>
+          <p>
+            A decade of building, testing, exiting — applying hypothesis-led
+            methodology across sectors.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="section">
+    <div class="container container--narrow">
+      <p class="pull-quote">
+        "Innovation is a discipline of experimentation, not inspiration.
+        Progress is something earned through evidence rather than enthusiasm."
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--sys-color-primary, #d42020);
+  }
+
+  .timeline-item h3 {
+    margin-bottom: 0.25rem;
+  }
+</style>

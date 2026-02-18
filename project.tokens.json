@@ -1,0 +1,974 @@
+{
+  "$schema": "https://design-tokens.org/schemas/v2025.10/",
+  "$version": "1.0.0",
+  "$description": "00→01 Design System Tokens – The Idea Drug (cover-aligned palette + jamesclear.com layout)",
+  "$extensions": {
+    "internalOnlyPolicy": "Drop any token with $extensions.internalOnly from public outputs."
+  },
+  "project": {},
+  "reference": {
+    "$description": "Base palette and primitives",
+    "palette": {
+      "brand": {
+        "primary": {
+          "$value": "#D42020",
+          "$type": "color",
+          "$description": "Cover red — dominant colour from book cover"
+        },
+        "secondary": {
+          "$value": "#F9F8F4",
+          "$type": "color",
+          "$description": "Warm cream — page background for readability"
+        },
+        "tertiary": {
+          "$value": "#000000",
+          "$type": "color",
+          "$description": "Black — buttons, 'DRUG' title text, heavy graphic weight"
+        },
+        "accent": {
+          "$value": "#A8153A",
+          "$type": "color",
+          "$description": "Deep crimson/magenta — darker red-pink from cover texture"
+        }
+      },
+      "feedback": {
+        "error": {
+          "$value": "#DC2626",
+          "$type": "color",
+          "$description": "Distinct from brand red — more orange-red for form errors"
+        },
+        "success": {
+          "$value": "#16A34A",
+          "$type": "color"
+        },
+        "warning": {
+          "$value": "#CA8A04",
+          "$type": "color"
+        }
+      },
+      "neutral": {
+        "0": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "50": {
+          "$value": "#F9F8F4",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "#f3f4f6",
+          "$type": "color"
+        },
+        "200": {
+          "$value": "#e5e7eb",
+          "$type": "color"
+        },
+        "300": {
+          "$value": "#d1d5db",
+          "$type": "color"
+        },
+        "400": {
+          "$value": "#9ca3af",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#6b7280",
+          "$type": "color"
+        },
+        "600": {
+          "$value": "#4b5563",
+          "$type": "color"
+        },
+        "700": {
+          "$value": "#374151",
+          "$type": "color"
+        },
+        "800": {
+          "$value": "#1f2937",
+          "$type": "color"
+        },
+        "900": {
+          "$value": "#111827",
+          "$type": "color"
+        },
+        "950": {
+          "$value": "#000000",
+          "$type": "color"
+        }
+      }
+    },
+    "spacing": {
+      "$description": "Named spacing scale (rem-based from site)",
+      "xxs": {
+        "$value": "0.44rem",
+        "$type": "dimension"
+      },
+      "xs": {
+        "$value": "0.67rem",
+        "$type": "dimension"
+      },
+      "small": {
+        "$value": "1rem",
+        "$type": "dimension"
+      },
+      "medium": {
+        "$value": "1.5rem",
+        "$type": "dimension"
+      },
+      "large": {
+        "$value": "2.25rem",
+        "$type": "dimension"
+      },
+      "xl": {
+        "$value": "3.38rem",
+        "$type": "dimension"
+      },
+      "xxl": {
+        "$value": "5.06rem",
+        "$type": "dimension"
+      },
+      "gutterSize": {
+        "$value": "2em",
+        "$type": "dimension"
+      },
+      "pagePadding": {
+        "$value": "100px",
+        "$type": "dimension"
+      },
+      "cardPadding": {
+        "$value": "24px",
+        "$type": "dimension"
+      }
+    },
+    "radius": {
+      "$description": "Named border radius scale — site uses sharp square corners throughout",
+      "none": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "small": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "medium": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "large": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "pill": {
+        "$value": "0px",
+        "$type": "dimension"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "display": {
+          "$value": "'Jost', sans-serif",
+          "$type": "fontFamily",
+          "$description": "Jost — geometric sans, closest Google Fonts match to Europa"
+        },
+        "body": {
+          "$value": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          "$type": "fontFamily"
+        },
+        "mono": {
+          "$value": "monospace",
+          "$type": "fontFamily"
+        }
+      },
+      "scaleRatio": {
+        "$value": 1.25,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "lineHeightTight": {
+        "$value": 1.45,
+        "$type": "number"
+      },
+      "lineHeightLoose": {
+        "$value": 1.6,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "sizes": {
+        "small": {
+          "$value": "13px",
+          "$type": "dimension"
+        },
+        "base": {
+          "$value": "18px",
+          "$type": "dimension"
+        },
+        "large": {
+          "$value": "20px",
+          "$type": "dimension"
+        },
+        "xlarge": {
+          "$value": "36px",
+          "$type": "dimension"
+        },
+        "hero": {
+          "$value": "42px",
+          "$type": "dimension"
+        },
+        "h4": {
+          "$value": "21px",
+          "$type": "dimension"
+        },
+        "h5": {
+          "$value": "18px",
+          "$type": "dimension"
+        }
+      }
+    }
+  },
+  "system": {
+    "$description": "Semantic tokens",
+    "color": {
+      "primary": {
+        "$value": "{reference.palette.brand.primary}",
+        "$type": "color"
+      },
+      "secondary": {
+        "$value": "{reference.palette.brand.secondary}",
+        "$type": "color"
+      },
+      "tertiary": {
+        "$value": "{reference.palette.brand.tertiary}",
+        "$type": "color"
+      },
+      "error": {
+        "$value": "{reference.palette.feedback.error}",
+        "$type": "color"
+      },
+      "success": {
+        "$value": "{reference.palette.feedback.success}",
+        "$type": "color"
+      },
+      "warning": {
+        "$value": "{reference.palette.feedback.warning}",
+        "$type": "color"
+      },
+      "actionDefault": {
+        "$value": "{reference.palette.brand.tertiary}",
+        "$type": "color",
+        "$description": "Black buttons — matches cover's bold graphic treatment"
+      },
+      "actionHover": {
+        "$value": "{reference.palette.neutral.800}",
+        "$type": "color"
+      },
+      "actionActive": {
+        "$value": "{reference.palette.neutral.700}",
+        "$type": "color"
+      },
+      "actionText": {
+        "$value": "{reference.palette.neutral.0}",
+        "$type": "color",
+        "$description": "White text on black buttons"
+      },
+      "focusRing": {
+        "$value": "{reference.palette.brand.primary}",
+        "$type": "color",
+        "$description": "Red focus ring — on-brand accessibility indicator"
+      },
+      "controlChecked": {
+        "$value": "{reference.palette.brand.primary}",
+        "$type": "color"
+      },
+      "toggleActive": {
+        "$value": "{reference.palette.brand.primary}",
+        "$type": "color"
+      },
+      "toggleInactive": {
+        "$value": "{reference.palette.neutral.200}",
+        "$type": "color"
+      },
+      "overlay": {
+        "$value": "{reference.palette.neutral.950}",
+        "$type": "color"
+      },
+      "divider": {
+        "$value": "{reference.palette.neutral.200}",
+        "$type": "color"
+      },
+      "dividerAccentStart": {
+        "$value": "{reference.palette.brand.primary}",
+        "$type": "color",
+        "$description": "Red accent divider start"
+      },
+      "dividerAccentEnd": {
+        "$value": "{reference.palette.brand.accent}",
+        "$type": "color",
+        "$description": "Deep crimson divider end"
+      },
+      "onSurface": {
+        "$value": "{reference.palette.neutral.950}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.50}"
+          }
+        }
+      },
+      "onSurfaceMuted": {
+        "$value": "{reference.palette.neutral.500}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.400}"
+          }
+        }
+      },
+      "outlineVariant": {
+        "$value": "{reference.palette.neutral.200}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.700}"
+          }
+        }
+      }
+    },
+    "surface": {
+      "cardFill": {
+        "$value": "{reference.palette.neutral.100}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.900}"
+          }
+        }
+      },
+      "pageBackground": {
+        "$value": "{reference.palette.brand.secondary}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.950}"
+          }
+        }
+      },
+      "surface2": {
+        "$value": "{reference.palette.neutral.50}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.800}"
+          }
+        }
+      },
+      "border": {
+        "$value": "{reference.palette.neutral.200}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.700}"
+          }
+        }
+      },
+      "formField": {
+        "$value": "{reference.palette.neutral.0}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.brand.primary}"
+          }
+        }
+      },
+      "formBorder": {
+        "$value": "{reference.palette.neutral.300}",
+        "$type": "color",
+        "$extensions": {
+          "mode": {
+            "dark": "{reference.palette.neutral.700}"
+          }
+        }
+      },
+      "shadows": {
+        "natural": {
+          "$value": "6px 6px 9px rgba(0, 0, 0, 0.2)",
+          "$type": "shadow"
+        },
+        "deep": {
+          "$value": "12px 12px 50px rgba(0, 0, 0, 0.4)",
+          "$type": "shadow"
+        },
+        "sharp": {
+          "$value": "6px 6px 0px rgba(0, 0, 0, 0.2)",
+          "$type": "shadow"
+        },
+        "panel": {
+          "$value": "0 12px 30px rgba(0, 0, 0, 0.08)",
+          "$type": "shadow"
+        },
+        "image": {
+          "$value": "0 16px 32px rgba(0, 0, 0, 0.12)",
+          "$type": "shadow"
+        }
+      },
+      "patterns": {
+        "paper": {
+          "$value": "none",
+          "$type": "string"
+        },
+        "stripe": {
+          "$value": "none",
+          "$type": "string"
+        },
+        "glowPrimary": {
+          "$value": "transparent",
+          "$type": "color"
+        },
+        "glowSecondary": {
+          "$value": "transparent",
+          "$type": "color"
+        }
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "display": {
+          "$value": "{reference.typography.fontFamily.display}",
+          "$type": "fontFamily"
+        },
+        "body": {
+          "$value": "{reference.typography.fontFamily.body}",
+          "$type": "fontFamily"
+        },
+        "mono": {
+          "$value": "{reference.typography.fontFamily.mono}",
+          "$type": "fontFamily"
+        }
+      },
+      "scaleRatio": {
+        "$value": "{reference.typography.scaleRatio}",
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": "{reference.typography.lineHeight}",
+        "$type": "number"
+      },
+      "lineHeightTight": {
+        "$value": "{reference.typography.lineHeightTight}",
+        "$type": "number"
+      },
+      "lineHeightLoose": {
+        "$value": "{reference.typography.lineHeightLoose}",
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "{reference.typography.letterSpacing}",
+        "$type": "dimension"
+      },
+      "sizes": {
+        "small": {
+          "$value": "{reference.typography.sizes.small}",
+          "$type": "dimension"
+        },
+        "base": {
+          "$value": "{reference.typography.sizes.base}",
+          "$type": "dimension"
+        },
+        "large": {
+          "$value": "{reference.typography.sizes.large}",
+          "$type": "dimension"
+        },
+        "xlarge": {
+          "$value": "{reference.typography.sizes.xlarge}",
+          "$type": "dimension"
+        },
+        "hero": {
+          "$value": "{reference.typography.sizes.hero}",
+          "$type": "dimension"
+        }
+      }
+    },
+    "spacing": {
+      "xxs": {
+        "$value": "{reference.spacing.xxs}",
+        "$type": "dimension"
+      },
+      "xs": {
+        "$value": "{reference.spacing.xs}",
+        "$type": "dimension"
+      },
+      "small": {
+        "$value": "{reference.spacing.small}",
+        "$type": "dimension"
+      },
+      "medium": {
+        "$value": "{reference.spacing.medium}",
+        "$type": "dimension"
+      },
+      "large": {
+        "$value": "{reference.spacing.large}",
+        "$type": "dimension"
+      },
+      "xl": {
+        "$value": "{reference.spacing.xl}",
+        "$type": "dimension"
+      },
+      "xxl": {
+        "$value": "{reference.spacing.xxl}",
+        "$type": "dimension"
+      },
+      "gutterSize": {
+        "$value": "{reference.spacing.gutterSize}",
+        "$type": "dimension"
+      },
+      "pagePadding": {
+        "$value": "{reference.spacing.pagePadding}",
+        "$type": "dimension"
+      },
+      "cardPadding": {
+        "$value": "{reference.spacing.cardPadding}",
+        "$type": "dimension"
+      }
+    },
+    "radius": {
+      "small": {
+        "$value": "{reference.radius.small}",
+        "$type": "dimension"
+      },
+      "medium": {
+        "$value": "{reference.radius.medium}",
+        "$type": "dimension"
+      },
+      "large": {
+        "$value": "{reference.radius.large}",
+        "$type": "dimension"
+      },
+      "pill": {
+        "$value": "{reference.radius.pill}",
+        "$type": "dimension"
+      }
+    },
+    "governors": {
+      "form": {
+        "inputHeight": {
+          "$value": "44px",
+          "$type": "dimension"
+        },
+        "borderWidth": {
+          "$value": "1px",
+          "$type": "dimension"
+        },
+        "controlSize": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "controlRadius": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "radioDotSize": {
+          "$value": "8px",
+          "$type": "dimension"
+        },
+        "toggleWidth": {
+          "$value": "36px",
+          "$type": "dimension"
+        },
+        "toggleHeight": {
+          "$value": "20px",
+          "$type": "dimension"
+        },
+        "toggleThumbSize": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "focusRingWidth": {
+          "$value": "2px",
+          "$type": "dimension"
+        }
+      },
+      "button": {
+        "height": {
+          "$value": "48px",
+          "$type": "dimension"
+        },
+        "padding": {
+          "$value": "12px 24px",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{reference.radius.none}",
+          "$type": "dimension"
+        },
+        "fontSize": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "fixedWidth": {
+          "$value": "140px",
+          "$type": "dimension"
+        }
+      },
+      "action": {
+        "focusRingWidth": {
+          "$value": "2px",
+          "$type": "dimension"
+        }
+      }
+    },
+    "layout": {
+      "columns": {
+        "$value": 11,
+        "$type": "number"
+      },
+      "mobileColumns": {
+        "$value": 4,
+        "$type": "number"
+      },
+      "breakpoints": {
+        "mobile": {
+          "$value": "768px",
+          "$type": "dimension"
+        },
+        "tablet": {
+          "$value": "992px",
+          "$type": "dimension"
+        },
+        "desktop": {
+          "$value": "1025px",
+          "$type": "dimension"
+        }
+      }
+    },
+    "gradient": {},
+    "textGradient": {
+      "startColor": {
+        "$value": "{system.color.onSurface}",
+        "$type": "color"
+      },
+      "endColor": {
+        "$value": "{reference.palette.neutral.700}",
+        "$type": "color"
+      },
+      "angle": {
+        "$value": 90,
+        "$type": "number"
+      }
+    },
+    "motion": {
+      "duration": {
+        "$value": "200ms",
+        "$type": "duration"
+      },
+      "cubicBezier": {
+        "$value": [0.4, 0, 0.2, 1],
+        "$type": "cubicBezier"
+      }
+    },
+    "accessibility": {},
+    "zIndex": {
+      "base": {
+        "$value": 0,
+        "$type": "number"
+      },
+      "dropdown": {
+        "$value": 100,
+        "$type": "number"
+      },
+      "sticky": {
+        "$value": 200,
+        "$type": "number"
+      },
+      "modal": {
+        "$value": 300,
+        "$type": "number"
+      },
+      "popover": {
+        "$value": 400,
+        "$type": "number"
+      },
+      "toast": {
+        "$value": 500,
+        "$type": "number"
+      }
+    },
+    "divider": {
+      "thickness": {
+        "$value": "1px",
+        "$type": "dimension"
+      },
+      "color": {
+        "$value": "{system.color.outlineVariant}",
+        "$type": "color"
+      },
+      "opacity": {
+        "$value": 100,
+        "$type": "number"
+      },
+      "inset": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "accentStart": {
+        "$value": "{system.color.dividerAccentStart}",
+        "$type": "color"
+      },
+      "accentEnd": {
+        "$value": "{system.color.dividerAccentEnd}",
+        "$type": "color"
+      },
+      "accentThickness": {
+        "$value": "4px",
+        "$type": "dimension"
+      }
+    }
+  },
+  "component": {
+    "$description": "Component-specific tokens",
+    "action": {
+      "defaultBg": {
+        "$value": "{system.color.actionDefault}",
+        "$type": "color"
+      },
+      "hoverBg": {
+        "$value": "{system.color.actionHover}",
+        "$type": "color"
+      },
+      "activeBg": {
+        "$value": "{system.color.actionActive}",
+        "$type": "color"
+      },
+      "textColor": {
+        "$value": "{system.color.actionText}",
+        "$type": "color"
+      },
+      "focusRingWidth": {
+        "$value": "{system.governors.action.focusRingWidth}",
+        "$type": "dimension"
+      },
+      "disabledOpacity": {
+        "$value": 0.5,
+        "$type": "number"
+      }
+    },
+    "form": {
+      "inputHeight": {
+        "$value": "{system.governors.form.inputHeight}",
+        "$type": "dimension"
+      },
+      "borderWidth": {
+        "$value": "{system.governors.form.borderWidth}",
+        "$type": "dimension"
+      },
+      "borderColor": {
+        "$value": "{system.surface.formBorder}",
+        "$type": "color"
+      },
+      "background": {
+        "$value": "{system.surface.formField}",
+        "$type": "color"
+      },
+      "focusRingWidth": {
+        "$value": "{system.governors.form.focusRingWidth}",
+        "$type": "dimension"
+      },
+      "focusRingColor": {
+        "$value": "{system.color.focusRing}",
+        "$type": "color"
+      },
+      "controlSize": {
+        "$value": "{system.governors.form.controlSize}",
+        "$type": "dimension"
+      },
+      "controlRadius": {
+        "$value": "{system.governors.form.controlRadius}",
+        "$type": "dimension"
+      },
+      "controlCheckedColor": {
+        "$value": "{system.color.controlChecked}",
+        "$type": "color"
+      },
+      "radioDotSize": {
+        "$value": "{system.governors.form.radioDotSize}",
+        "$type": "dimension"
+      },
+      "toggleWidth": {
+        "$value": "{system.governors.form.toggleWidth}",
+        "$type": "dimension"
+      },
+      "toggleHeight": {
+        "$value": "{system.governors.form.toggleHeight}",
+        "$type": "dimension"
+      },
+      "toggleThumbSize": {
+        "$value": "{system.governors.form.toggleThumbSize}",
+        "$type": "dimension"
+      },
+      "toggleActiveColor": {
+        "$value": "{system.color.toggleActive}",
+        "$type": "color"
+      },
+      "toggleInactiveColor": {
+        "$value": "{system.color.toggleInactive}",
+        "$type": "color"
+      },
+      "errorColor": {
+        "$value": "{system.color.error}",
+        "$type": "color"
+      },
+      "successColor": {
+        "$value": "{system.color.success}",
+        "$type": "color"
+      }
+    },
+    "button": {
+      "height": {
+        "$value": "{system.governors.button.height}",
+        "$type": "dimension"
+      },
+      "padding": {
+        "$value": "{system.governors.button.padding}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{system.governors.button.radius}",
+        "$type": "dimension"
+      },
+      "fontSize": {
+        "$value": "{system.governors.button.fontSize}",
+        "$type": "dimension"
+      },
+      "fixedWidth": {
+        "$value": "{system.governors.button.fixedWidth}",
+        "$type": "dimension"
+      }
+    },
+    "input": {
+      "height": {
+        "$value": "{system.governors.form.inputHeight}",
+        "$type": "dimension"
+      },
+      "elevation": {
+        "$value": 0,
+        "$type": "number"
+      }
+    },
+    "sheet": {
+      "scrimOpacity": {
+        "$value": 50,
+        "$type": "number"
+      },
+      "maxWidth": {
+        "$value": "400px",
+        "$type": "dimension"
+      },
+      "maxHeight": {
+        "$value": "600px",
+        "$type": "dimension"
+      }
+    },
+    "imagery": {
+      "objectFit": {
+        "$value": "cover",
+        "$type": "string"
+      },
+      "overlayColor": {
+        "$value": "{system.color.overlay}",
+        "$type": "color"
+      },
+      "overlayOpacity": {
+        "$value": 0,
+        "$type": "number"
+      },
+      "borderWidth": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": false,
+        "$type": "boolean"
+      }
+    },
+    "icon": {
+      "strokeWidth": {
+        "$value": 1.5,
+        "$type": "number"
+      }
+    }
+  },
+  "logo": {
+    "$description": "Logo system tokens",
+    "colorVariants": {},
+    "sizes": {
+      "favicon": {
+        "width": {
+          "$value": 32,
+          "$type": "number"
+        },
+        "height": {
+          "$value": 32,
+          "$type": "number"
+        }
+      },
+      "appIcon": {
+        "width": {
+          "$value": 512,
+          "$type": "number"
+        },
+        "height": {
+          "$value": 512,
+          "$type": "number"
+        }
+      },
+      "socialAvatar": {
+        "width": {
+          "$value": 400,
+          "$type": "number"
+        },
+        "height": {
+          "$value": 400,
+          "$type": "number"
+        }
+      },
+      "simplifiedMark": {
+        "width": {
+          "$value": 64,
+          "$type": "number"
+        },
+        "height": {
+          "$value": 64,
+          "$type": "number"
+        }
+      }
+    },
+    "usageRules": {
+      "clearSpaceMultiplier": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "minimumSizeScreen": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "minimumSizePrint": {
+        "$value": "10mm",
+        "$type": "dimension"
+      }
+    }
+  },
+  "metadata": {
+    "projectId": "project",
+    "compilerVersion": "2.9.7",
+    "sourceReference": "jamesclear.com",
+    "diagnostics": {
+      "contrastRatio": 17.74,
+      "contrastPass": true,
+      "goldenRatioPass": true
+    }
+  }
+}
