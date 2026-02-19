@@ -31,15 +31,6 @@ const bookJsonLd = {
   <section class="hero section section--lg">
     <div class="container">
       <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="hero-eyebrow">{d.heroEyebrow}</p>
-          <h1>{SITE.book.title}</h1>
-          <p class="hero-subtitle">{d.heroSubtitle}</p>
-          <div class="hero-actions">
-            <a href="/the-idea-drug" class="btn btn--primary">Get the book</a>
-            <a href="#free-chapter" class="btn btn--ghost">Free first chapter</a>
-          </div>
-        </div>
         <div class="hero-image">
           <img
             src="/images/cover.png"
@@ -48,6 +39,15 @@ const bookJsonLd = {
             height="600"
             loading="eager"
           />
+        </div>
+        <div class="hero-copy">
+          <p class="hero-eyebrow">{d.heroEyebrow}</p>
+          <h1>{SITE.book.title}</h1>
+          <p class="hero-subtitle">{d.heroSubtitle}</p>
+          <div class="hero-actions">
+            <a href="/the-idea-drug" class="btn btn--primary">Get the book</a>
+            <a href="#free-chapter" class="btn btn--ghost">Free first chapter</a>
+          </div>
         </div>
       </div>
     </div>
@@ -164,8 +164,8 @@ const bookJsonLd = {
       justify-content: center;
     }
 
-    .hero-image {
-      order: -1;
+    .hero-copy {
+      order: 1;
     }
 
     .hero-image img {
